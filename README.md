@@ -1,3 +1,10 @@
+# Integrantes:
+Vinicius Murtinho Vicente Rm551151 
+Lucas Barreto Consentino RM557107
+Gustavo Bispo Cordeiro RM558515
+
+---
+
 # 🚀 GS-Java
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
