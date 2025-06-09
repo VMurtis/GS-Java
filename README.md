@@ -10,6 +10,8 @@ Gustavo Bispo Cordeiro RM558515
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+link youtube: https://youtu.be/2jhS1e_wTTE
+link youtube: https://youtu.be/LV4Ezj8O0Qk
 
 ## 📋 Descrição
 
