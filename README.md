@@ -80,9 +80,16 @@ A seguir, mostramos como utilizar o Postman ou qualquer cliente HTTP para consum
 
 ```json
 {
-  "nome": "Abrigo Santas",
-  "endereco": "Rua Paz, 111",
-  "capacidadeMaxima": 70
+  "nome": "Abrigo Esperança",
+  "endereco": "Rua das Flores, 123",
+  "capacidadeMaxima": 250,
+  "cidade": "São Paulo",
+  "estado": "SP",
+  "cep": "01234-567",
+  "estoque": [],
+  "necessidades": [],
+  "desabrigados": [],
+  "adm": []
 }
 
 ```
