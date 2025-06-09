@@ -33,7 +33,7 @@ public class UsuarioService {
         if (usuario.isPresent()) {
             Usuario u = usuario.get();
 
-            return new UsuarioGetDto(u.getId(), u.getNome(), u.getEmail(), u.getSenha(),u.getPerfil());
+            return new UsuarioGetDto(u.getId(), u.getNome(), u.getEmail(), u.getSenha());
         } else {
             return null;
         }
@@ -46,7 +46,7 @@ public class UsuarioService {
         usuario.setNome(dto.nome());
         usuario.setEmail(dto.email());
         usuario.setSenha(dto.senha());
-        usuario.setPerfil(dto.perfil());
+
 
 
         Usuario atualizado = usuarioRepository.save(usuario);

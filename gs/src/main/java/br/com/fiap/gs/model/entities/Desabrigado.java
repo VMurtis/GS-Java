@@ -1,13 +1,11 @@
 package br.com.fiap.gs.model.entities;
 
-
-import br.com.fiap.gs.dto.Usuario.UsuarioDto;
+import br.com.fiap.gs.dto.Desabrigado.DesabrigadoDto;
 import jakarta.persistence.*;
 
 
 @Entity
-public class Usuario {
-
+public class Desabrigado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,34 +17,36 @@ public class Usuario {
 
     private String senha;
 
-    public Abrigo getAbrigo() {
-        return abrigo;
-    }
-
-    public void setAbrigo(Abrigo abrigo) {
-        this.abrigo = abrigo;
-    }
+    private int idade;
+    private String telefone;
 
     @ManyToOne
     @JoinColumn(name = "id_abrigo")
     private Abrigo abrigo;
 
-
-
-    public Usuario() {
+    public Desabrigado() {
     }
 
-    public Usuario(Long id, String nome, String email, String senha) {
+    public Desabrigado(Long id, String nome, String email, String senha, int idade, String telefone, Abrigo abrigo) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.idade = idade;
+        this.telefone = telefone;
+        this.abrigo = abrigo;
     }
 
-    public Usuario(UsuarioDto dto) {
+    public Desabrigado(DesabrigadoDto dto) {
+        this.id = dto.id();
         this.nome = dto.nome();
-        this.email = dto.email();
+        this.email =dto.email();
         this.senha = dto.senha();
+        this.idade = dto.idade();
+        this.telefone = dto.telefone();
+        this.abrigo = dto.abrigo();
+
+
     }
 
 
@@ -83,6 +83,30 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public Abrigo getAbrigo() {
+        return abrigo;
+    }
+
+    public void setAbrigo(Abrigo abrigo) {
+        this.abrigo = abrigo;
+    }
+
+
 
 }
-

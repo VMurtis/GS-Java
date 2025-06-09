@@ -3,14 +3,12 @@ package br.com.fiap.gs.service;
 
 import br.com.fiap.gs.dto.abrigo.AbrigoDto;
 import br.com.fiap.gs.dto.abrigo.AbrigoGetDto;
-import br.com.fiap.gs.model.entities.Abrigo;
-import br.com.fiap.gs.model.entities.Necessidade;
+import br.com.fiap.gs.model.entities.*;
 import br.com.fiap.gs.repository.AbrigoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
-import br.com.fiap.gs.model.entities.Usuario;
 
 @Service
 public class AbrigoService {
@@ -35,10 +33,9 @@ public class AbrigoService {
         if (abrigo.isPresent()) {
             Abrigo a = abrigo.get();
 
-            return new AbrigoGetDto(a.getId(), a.getNome(), a.getEndereco(), a.getCapacidadeMaxima(),
-                    a.getUsuario()
-                    .stream().map(Usuario::getNome).toList(),
-                    a.getNecessidades().stream().map(Necessidade::getTipo).toList());
+            return new AbrigoGetDto(a.getId(), a.getNome(), a.getEndereco(), a.getCapacidadeMaxima(), a.getCidade(), a.getEstado(), a.getCep(),a.getEstoque().stream().map(Estoque::getId).toList(),
+                    a.getNecessidades().stream().map(Necessidade::getTipo).toList(), a.getDesabrigados().stream().map(Desabrigado::getId).toList(),
+                    a.getAdministradores().stream().map(Administrador::getId).toList());
         } else {
             return null;
         }
@@ -51,9 +48,10 @@ public class AbrigoService {
         abrigo.setNome(dto.nome());
         abrigo.setEndereco(dto.endereco());
         abrigo.setCapacidadeMaxima(dto.capacidadeMaxima());
+        abrigo.setCidade(dto.cidade());
+        abrigo.setEstado(dto.estado());
+        abrigo.setCep(dto.cep());
 
-        /*abrigo.setUsuario(dto.usuario());
-        abrigo.setNecessidades(dto.necessidades());*/
 
         Abrigo atualizado = abrigoRepository.save(abrigo);
         return new AbrigoGetDto(atualizado);

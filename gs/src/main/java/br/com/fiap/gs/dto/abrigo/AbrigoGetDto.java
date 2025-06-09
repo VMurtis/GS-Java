@@ -1,10 +1,7 @@
 package br.com.fiap.gs.dto.abrigo;
 
-import br.com.fiap.gs.model.entities.Abrigo;
-import br.com.fiap.gs.model.entities.Necessidade;
-import br.com.fiap.gs.model.entities.Usuario;
-import br.com.fiap.gs.model.enums.PerfilUsuario;
-import br.com.fiap.gs.model.enums.TipoNecessidade;
+import br.com.fiap.gs.model.entities.*;
+import br.com.fiap.gs.model.enums.TipoItem;
 
 import java.util.List;
 
@@ -13,8 +10,19 @@ public record AbrigoGetDto(
         String nome,
         String endereco,
         Integer capacidadeMaxima,
-        List<String> usuario,
-        List<TipoNecessidade> necessidades
+
+        String cidade,
+
+        String estado,
+        String cep,
+
+        List<Long> estoque,
+
+        List<TipoItem> necessidades,
+
+        List<Long> desabrigados,
+
+        List<Long> adm
 ) {
     public AbrigoGetDto(Abrigo abrigo) {
         this(
@@ -22,10 +30,16 @@ public record AbrigoGetDto(
                 abrigo.getNome(),
                 abrigo.getEndereco(),
                 abrigo.getCapacidadeMaxima(),
-                abrigo.getUsuario().stream().map(Usuario::getNome).toList(),
-                abrigo.getNecessidades().stream().map(Necessidade::getTipo).toList()
+                abrigo.getCidade(),
+                abrigo.getEstado(),
+                abrigo.getCep(),
+                abrigo.getEstoque().stream().map(Estoque::getId).toList(),
+                abrigo.getNecessidades().stream().map(Necessidade::getTipo).toList(),
+                abrigo.getDesabrigados().stream().map(Desabrigado::getId).toList(),
+                abrigo.getAdministradores().stream().map(Administrador::getId).toList()
         );
     }
+
 
 
 }

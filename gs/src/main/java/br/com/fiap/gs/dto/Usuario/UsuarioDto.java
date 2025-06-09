@@ -1,8 +1,5 @@
 package br.com.fiap.gs.dto.Usuario;
 
-import br.com.fiap.gs.model.enums.PerfilUsuario;
-import jakarta.persistence.*;
-
 public record UsuarioDto(
 
         Long id,
@@ -12,10 +9,10 @@ public record UsuarioDto(
 
         String email,
 
-        String senha,
+        String senha
 
 
-        PerfilUsuario perfil
+
 ) {
 
 }

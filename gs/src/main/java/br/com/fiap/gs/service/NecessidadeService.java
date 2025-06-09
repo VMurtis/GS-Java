@@ -43,7 +43,7 @@ public class NecessidadeService {
         Necessidade necessidade = necessidadeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Necessidade não encontrado"));
 
-        necessidade.setId(dto.id());
+
         necessidade.setTipo(dto.tipo());
         necessidade.setQuantidade(dto.quantidade());
         necessidade.setPrioridade(dto.prioridade());
@@ -60,6 +60,8 @@ public class NecessidadeService {
     public void delete(Long id) {
         necessidadeRepository.deleteById(id);
     }
+
+
 
 
 

@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.*;
 
+
 import java.util.List;
 
 
@@ -23,32 +24,54 @@ public class Abrigo {
 
     private Integer capacidadeMaxima;
 
-    @OneToMany(mappedBy = "abrigo", cascade = CascadeType.ALL)
-    private List<Usuario> usuario;
+    private String cidade;
+    private String estado;
+    private String cep;
 
+
+    @OneToMany(mappedBy = "abrigo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Desabrigado> desabrigados;
     @OneToMany(mappedBy = "abrigo", cascade = CascadeType.ALL)
     private List<Necessidade> necessidades;
+
+    @OneToMany(mappedBy = "abrigo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Administrador> administradores;
+
+    @OneToMany(mappedBy = "abrigo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Estoque> estoque;
+
 
     public Abrigo() {
     }
 
-    public Abrigo(Long id, String nome, String endereco, Integer capacidadeMaxima, List<Usuario> usuario, List<Necessidade> necessidades) {
+    public Abrigo(Long id, String nome, String endereco, Integer capacidadeMaxima, String cidade, String estado, String cep, List<Desabrigado> desabrigados, List<Necessidade> necessidades, List<Administrador> administradores, List<Estoque> estoque) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
         this.capacidadeMaxima = capacidadeMaxima;
-        this.usuario = usuario;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.cep = cep;
+        this.desabrigados = desabrigados;
         this.necessidades = necessidades;
+        this.administradores = administradores;
+        this.estoque = estoque;
     }
 
     public Abrigo(AbrigoDto dto) {
         this.nome = dto.nome();
         this.endereco = dto.endereco();
         this.capacidadeMaxima = dto.capacidadeMaxima();
-        this.usuario = dto.usuario();
+        this.cidade = dto.cidade();
+        this.estado = dto.estado();
+        this.cep = dto.cep();
+        this.estoque = dto.estoque();
         this.necessidades = dto.necessidades();
+        this.desabrigados = dto.desabrigados();
+        this.administradores = dto.adm();
 
     }
+
 
 
     public Long getId() {
@@ -83,13 +106,6 @@ public class Abrigo {
         this.capacidadeMaxima = capacidadeMaxima;
     }
 
-    public List<Usuario> getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(List<Usuario> usuario) {
-        this.usuario = usuario;
-    }
 
     public List<Necessidade> getNecessidades() {
         return necessidades;
@@ -99,6 +115,51 @@ public class Abrigo {
         this.necessidades = necessidades;
     }
 
+    public List<Administrador> getAdministradores() {
+        return administradores;
+    }
 
+    public void setAdministradores(List<Administrador> administradores) {
+        this.administradores = administradores;
+    }
 
+    public List<Desabrigado> getDesabrigados() {
+        return desabrigados;
+    }
+
+    public void setDesabrigados(List<Desabrigado> desabrigados) {
+        this.desabrigados = desabrigados;
+    }
+
+    public List<Estoque> getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(List<Estoque> estoque) {
+        this.estoque = estoque;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
 }

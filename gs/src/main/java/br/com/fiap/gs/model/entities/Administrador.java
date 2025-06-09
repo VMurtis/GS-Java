@@ -1,12 +1,10 @@
 package br.com.fiap.gs.model.entities;
 
-
-import br.com.fiap.gs.dto.Usuario.UsuarioDto;
+import br.com.fiap.gs.dto.Administrador.AdministradorDto;
 import jakarta.persistence.*;
 
-
 @Entity
-public class Usuario {
+public class Administrador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,36 +17,33 @@ public class Usuario {
 
     private String senha;
 
-    public Abrigo getAbrigo() {
-        return abrigo;
-    }
+    private String cpf;
 
-    public void setAbrigo(Abrigo abrigo) {
-        this.abrigo = abrigo;
-    }
 
     @ManyToOne
     @JoinColumn(name = "id_abrigo")
     private Abrigo abrigo;
 
-
-
-    public Usuario() {
+    public Administrador() {
     }
 
-    public Usuario(Long id, String nome, String email, String senha) {
+    public Administrador(Long id, String nome, String email, String senha, String cpf, Abrigo abrigo) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.cpf = cpf;
+        this.abrigo = abrigo;
     }
 
-    public Usuario(UsuarioDto dto) {
+    public Administrador(AdministradorDto dto) {
         this.nome = dto.nome();
         this.email = dto.email();
         this.senha = dto.senha();
-    }
+        this.cpf = dto.cpf();
 
+
+    }
 
 
     public Long getId() {
@@ -83,6 +78,19 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
 
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Abrigo getAbrigo() {
+        return abrigo;
+    }
+
+    public void setAbrigo(Abrigo abrigo) {
+        this.abrigo = abrigo;
+    }
 }
-

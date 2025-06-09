@@ -4,14 +4,14 @@ import br.com.fiap.gs.model.entities.Abrigo;
 import br.com.fiap.gs.model.entities.Necessidade;
 import br.com.fiap.gs.model.enums.PrioridadeNecessidade;
 import br.com.fiap.gs.model.enums.StatusNecessidade;
-import br.com.fiap.gs.model.enums.TipoNecessidade;
+import br.com.fiap.gs.model.enums.TipoItem;
 
 
 
 public record NecessidadeGetDto(
         Long id,
 
-        TipoNecessidade tipo,
+        TipoItem tipo,
 
         Integer quantidade,
 
